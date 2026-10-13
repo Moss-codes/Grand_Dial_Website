@@ -2,10 +2,10 @@ from django.shortcuts import render
 
 # Create your views here.
 def home(request):
-    return render(request,'core/index.html')
+    return render(request, 'core/index.html')
 
 def draft(request):
-    return render(request,'core/draft.html')
+    return render(request, 'core/draft.html')
 
 def collection(request):
     watches = [
@@ -40,4 +40,10 @@ def collection(request):
             "available": False,
         },
     ]
-    return render(request,'core/collection.html', context={'watches':watches})
+    return render(request, 'core/collection.html', context={'watches': watches})
+
+def contact(request):
+    if request.method == 'POST':
+        # Here you can handle form submission logic later (like sending an email)
+        pass
+    return render(request, 'core/contact.html')

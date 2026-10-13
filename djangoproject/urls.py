@@ -23,4 +23,5 @@ urlpatterns = [
     path('', views.home, name='home'), # In case the name is long they can use the variable name
     path('draft/', views.draft, name='draft'),
     path('collection/', views.collection, name='collection'),
+    path('contact/', views.contact, name='contact'),
 ]

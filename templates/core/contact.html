@@ -1,0 +1,175 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block extra_css %}
+        /* Contact Page Specific Styles */
+        .contact-section {
+            padding: 140px 8% 100px 8%;
+            background-color: var(--color-bg-dark, #000000);
+            color: var(--color-white, #ffffff);
+            min-height: 100vh;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info .serif-heading {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .contact-desc {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .contact-details {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        .contact-details li {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #ccc;
+        }
+
+        .contact-details strong {
+            display: block;
+            color: var(--color-white, #ffffff);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        /* Form Styling matching your dark aesthetic */
+        .contact-form-box {
+            background: #111111;
+            padding: 50px;
+            border: 1px solid #222;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 14px;
+            color: #fff;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--color-white, #ffffff);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--color-white, #ffffff);
+            color: #000000;
+            padding: 15px;
+            border: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.85;
+        }
+
+        @media (max-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .contact-form-box {
+                padding: 30px 20px;
+            }
+        }
+{% endblock %}
+
+{% block content %}
+        <main>
+            <section class="contact-section">
+                <div class="contact-container">
+                    <!-- Left Side: Information -->
+                    <div class="contact-info">
+                        <h1 class="serif-heading">Get in Touch</h1>
+                        <p class="contact-desc">
+                            Whether you have an inquiry about our signature collection, bespoke options, or client care, our concierge is at your disposal.
+                        </p>
+                        <ul class="contact-details">
+                            <li>
+                                <strong>Concierge Desk</strong>
+                                support@timelessluxury.com
+                            </li>
+                            <li>
+                                <strong>Direct Line</strong>
+                                +1 (800) 555-TIME
+                            </li>
+                            <li>
+                                <strong>Boutique Atelier</strong>
+                                742 Evergreen Terrace, Suite 400<br>New York, NY 10019
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Right Side: Form -->
+                    <div class="contact-form-box">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" class="form-control" required placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" class="form-control" required placeholder="How may we assist you?"></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+{% endblock %}
