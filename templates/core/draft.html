@@ -1,0 +1,524 @@
+{% extends 'core/base.html'%}
+{% load static  %}
+
+{% block title %}HomePage{% endblock %}
+
+{% block extra_css %}
+            /* Header  */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(7, 7, 7, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: #cccccc;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-white);
+        }
+
+        .btn-primary-sm {
+            background: var(--color-white);
+            color: var(--color-bg-dark);
+            padding: 8px 18px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /*  Hero ssection */
+        .hero-section {
+            background-color: #000000;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 42% 58%;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            padding: 0 10%;
+            color: var(--color-white);
+            z-index: 2;
+        }
+
+        .serif-title {
+            font-family: var(--font-serif);
+            font-size: 3.8rem;
+            line-height: 1.1;
+            font-weight: 400;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 1px solid var(--color-white);
+            color: var(--color-white);
+            padding: 14px 28px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--color-white);
+            color: var(--color-bg-dark);
+        }
+
+        .hero-image-wrapper {
+            height: 100%;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at center, #0f2717 0%, #030805 100%);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            filter: drop-shadow(0px 20px 30px rgba(0,0,0,0.8));
+        }
+
+
+        .caseback-inset img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Statement Section  */
+        .statement-section {
+            padding: 100px 5%;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        .statement-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .side-watch-image {
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .side-img {
+            max-width: 100%;
+            height: auto;
+            max-height: 320px;
+            object-fit: contain;
+            filter: drop-shadow(0px 15px 25px rgba(0,0,0,0.15));
+        }
+
+        .serif-quote {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-weight: 400;
+            line-height: 1.35;
+            color: #111111;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /*  Signature Collection */
+        .collection-section {
+            padding: 80px 8%;
+            background-color: var(--color-bg-light);
+        }
+
+        .serif-heading {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        .serif-heading.center {
+            text-align: center;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid #eaeaea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .product-img-box {
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            background: #ffffff;
+        }
+
+        .product-img-box img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .product-title {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .product-desc {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        /*  Reflections */
+        .reflections-section {
+            padding: 100px 8%;
+            background: #ffffff;
+        }
+
+        .reflections-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .testimonial-body {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 480px;
+        }
+
+
+        .author-info strong {
+            display: block;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .author-info span {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        .reflections-gallery {
+            display: flex;
+            gap: 20px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 2px;
+            background: #eee;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .item-top {
+            width: 40%;
+            height: 250px;
+        }
+
+        .item-main {
+            width: 60%;
+            height: 380px;
+        }
+
+        .cta-banner {
+            position: relative;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 8%;
+            overflow: hidden;
+        }
+
+        .cta-bg-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: #111;
+        }
+
+        .cta-bg-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            padding: 50px;
+            max-width: 500px;
+            color: var(--color-white);
+        }
+
+        .cta-content .serif-heading.light {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .floating-thumbs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .thumb-box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: #222;
+            overflow: hidden;
+        }
+
+        .thumb-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-white {
+            display: inline-block;
+            background: var(--color-white);
+            color: var(--color-bg-dark);
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Footer*/
+        .site-footer {
+            background: var(--color-bg-dark);
+            color: #777777;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.8rem;
+            border-top: 1px solid #222;
+        }
+
+        @media (max-width: 900px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                padding-top: 100px;
+            }
+            .serif-title {
+                font-size: 2.8rem;
+            }
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .reflections-container {
+                grid-template-columns: 1fr;
+            }
+            .cta-banner {
+                justify-content: center;
+            }
+            .caseback-inset {
+                width: 80px;
+                height: 80px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+{% endblock %}
+
+{% block nav %} <!-- Nav Bar !-->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">Grand Dial</a>
+            <nav class="nav-links">
+                <a href="#hero">Home</a>
+                <a href="#signature">Collection</a>
+                <a href="#reflections">Story</a>
+                <a href="#footer">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#signature" class="btn-primary-sm">Shop Now</a>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+        <main>
+            <!-- 1. Hero Section -->
+            <section id="hero" class="hero-section">
+                <div class="hero-content">
+                    <h1 class="serif-title">Redefining<br>Fashion in<br>Timeless<br>Style</h1>
+                    <a href="#signature" class="btn-outline">EXPLORE COLLECTION</a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="{% static 'css/pic2.jpg' %}" alt ='' class="hero-img">
+                </div>
+            </section>
+
+            <!-- 2. Statement Section -->
+            <section class="statement-section">
+                <div class="statement-container">
+                    <div class="side-watch-image">
+                        <img src="https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=1000&q=80" alt="Watch Profile" class="side-img">
+                    </div>
+                    <h2 class="serif-quote">
+                        Experience timeless elegance with smartwatches designed to merge innovation, performance, and modern sophistication.
+                    </h2>
+                </div>
+            </section>
+
+            <!--  Collection -->
+            <section id="signature" class="collection-section">
+                <div class="section-header">
+                    <h2 class="serif-heading center">Signature Collection</h2>
+                </div>
+                <div class="products-grid">
+
+                    <div class="product-card">
+                        <div class="product-img-box">
+                            <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=600&q=80" alt="Noir Elegance">
+                        </div>
+                        <h3 class="product-title">NOIR ELEGANCE</h3>
+                        <p class="product-desc">Minimalist smartwatch combining refined style with intelligent daily connectivity.</p>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-img-box">
+                            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=600&q=80" alt="Aureum Classic">
+                        </div>
+                        <h3 class="product-title">AUREUM CLASSIC</h3>
+                        <p class="product-desc">Luxury gold smartwatch blending timeless elegance with modern innovation.</p>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-img-box">
+                            <img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=600&q=80" alt="Stratus Sport">
+                        </div>
+                        <h3 class="product-title">STRATUS SPORT</h3>
+                        <p class="product-desc">Dual-tone smartwatch designed for performance, precision, and active lifestyles.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 4. Reflections / Testimonial Section -->
+            <section id="reflections" class="reflections-section">
+                <div class="reflections-container">
+                    <div class="reflections-text">
+                        <h2 class="serif-heading">Reflections of<br>Timeless Luxury</h2>
+                        <p class="testimonial-body">
+                            An elegant smartwatch that elevates my lifestyle. A masterpiece on my wrist. It combines innovation with elegance in a way I've never seen before. Performance and elegance in perfect harmony.
+                        </p>
+
+                    </div>
+                    <div class="reflections-gallery">
+                        <div class="gallery-item item-top">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80" alt="Wrist Detail">
+                        </div>
+                        <div class="gallery-item item-main">
+                            <img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=600&q=80" alt="Smartwatch Wearing">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--  Bottom  Banner -->
+            <section class="cta-banner">
+                <div class="cta-bg-wrapper">
+                    <img src="{% static 'css/pic1.jpg' %}" alt="Luxury Wearer" class="cta-bg-img">
+                </div>
+                <div class="cta-content">
+                    <div class="floating-thumbs">
+                        <div class="thumb-box"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=150&q=80" alt="Feature 1"></div>
+                        <div class="thumb-box"><img src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=150&q=80" alt="Feature 2"></div>
+                    </div>
+                    <h2 class="serif-heading light">Experience Timeless Design with Intelligent Innovation.</h2>
+                    <a href="#signature" class="btn-white">GET YOURS LUXURY</a>
+                </div>
+            </section>
+        </main>
+{% endblock %}
+
+{% block footer %}
+    <!-- Footer -->
+    <footer id="footer" class="site-footer">
+        <p>&copy; 2026 El Mossa Luxury Timepieces. All rights reserved.</p>
+    </footer>
+{% endblock %}

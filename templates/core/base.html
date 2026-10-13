@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Grand Dial {% block title %}{% endblock %}</title>
+
+    <style>
+        :root {
+            --color-bg-dark: #070707;
+            --color-bg-light: #f8f8f8;
+            --color-text-dark: #111111;
+            --color-text-muted: #666666;
+            --color-white: #ffffff;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-display: 'Cinzel', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+                    /* Header  */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(7, 7, 7, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: #cccccc;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-white);
+        }
+
+        .btn-primary-sm {
+            background: var(--color-white);
+            color: var(--color-bg-dark);
+            padding: 8px 18px;
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .watch-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            background: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .watch-card h3 {
+            margin-top: 0;
+            color: #1a202c;
+        }
+
+        .watch-card .price {
+            font-weight: bold;
+            color: #2b6cb0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .status-badge.available {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .status-badge.unavailable {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-white);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .title {
+            margin-top: 90px;
+        }
+
+
+
+        {% block extra_css %}{% endblock %}
+
+        /* Footer*/
+        .site-footer {
+            background: var(--color-bg-dark);
+            color: #777777;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.8rem;
+            border-top: 1px solid #222;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="brand-logo">Grand Dial</a>
+            <nav class="nav-links">
+                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'collection' %}">Collection</a>
+                <a href="#reflections">Story</a>
+                <a href="#footer">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#signature" class="btn-primary-sm">Shop Now</a>
+            </div>
+        </div>
+    </header>
+
+
+    {% block content %}{% endblock %}
+
+
+    <!-- Footer -->
+    <footer id="footer" class="site-footer">
+        <p>&copy; 2026 El Mossa Luxury Timepieces. All rights reserved.</p>
+    </footer>
+</body>
+</html>

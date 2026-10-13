@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Collection{% endblock %}
+
+{% block content %}
+
+    <div class="collection-container">
+        <h1 class="title">Grand Dial Collection</h1>
+
+        <div class="watch-grid">
+            {% for watch in watches %}
+                {% include 'partials/product-card.html' %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+<div class="watch-card">
+    <h3>{{ watch.name }}</h3>
+    <p class="price">{{ watch.price }}</p>
+    <p class="description">{{ watch.description }}</p>
+
+    {% if watch.available %}
+        <span class="status-badge available">Available Now</span>
+    {% else %}
+        <span class="status-badge unavailable">Currently Sold Out</span>
+    {% endif %}
+</div>
+
